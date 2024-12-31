@@ -1,8 +1,17 @@
+import Guest from '@/components/Guest'
+import { currentUser } from '@clerk/nextjs/server'
 import React from 'react'
 
-const Home = () => {
+const Home = async () => {
+  const user = await currentUser()
+
+  if(!user){
+    return <Guest/>
+  }
   return (
-    <div>Home</div>
+    <main>
+      <h1>Welcome, {user.firstName}</h1>
+    </main>
   )
 }
 
