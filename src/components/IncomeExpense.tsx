@@ -1,18 +1,20 @@
-import React from 'react'
+import getIncomeExpense from "@/actions/getIncomeExpense";
+import React from "react";
 
-const IncomeExpense = () => {
+const IncomeExpense = async () => {
+  const { expense, income } = await getIncomeExpense();
   return (
     <div className="inc-exp-container">
-        <div>
-            <h4>Income</h4>
-            <p className="money plus">$700</p>
-        </div>
-        <div>
-            <h4>Expense</h4>
-            <p className="money minus">$200</p>
-        </div>
+      <div>
+        <h4>Income</h4>
+        <p className="money plus">${income}</p>
+      </div>
+      <div>
+        <h4>Expense</h4>
+        <p className="money minus">${expense}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default IncomeExpense
+export default IncomeExpense;
